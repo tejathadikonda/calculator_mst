@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 220px;
+            border: 1px solid #ccc;
+        }
+
+        #displayContent {
+            width: 100%;
+            height: 40px;
+            text-align: right;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 25%;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="displayContent">
+        <table class="buttons">
+            <tr>
+                <td><button onclick="inputContent('1')">1</button></td>
+                <td><button onclick="inputContent('2')">2</button></td>
+                <td><button onclick="inputContent('3')">3</button></td>
+                <td><button onclick="inputContent('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="inputContent('4')">4</button></td>
+                <td><button onclick="inputContent('5')">5</button></td>
+                <td><button onclick="inputContent('6')">6</button></td>
+                <td><button onclick="inputContent('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="inputContent('7')">7</button></td>
+                <td><button onclick="inputContent('8')">8</button></td>
+                <td><button onclick="inputContent('9')">9</button></td>
+                <td><button onclick="inputContent('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="clearData()">C</button></td>
+                <td><button onclick="inputContent('0')">0</button></td>
+                <td><button onclick="getResult()">=</button></td>
+                <td><button onclick="inputContent('/')">/</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script>
+    function inputContent(newData) {
+        var displayContent = document.getElementById('displayContent');
+        var prevData = displayContent.value;
+
+        displayContent.value = prevData + newData;
+    }
+
+    function clearData() {
+        document.getElementById('displayContent').value = "";
+    }
+
+    function getResult() {
+        var displayContent = document.getElementById('displayContent');
+        var prevData = displayContent.value;
+
+        displayContent.value = eval(prevData);
+    }
+</script>
+
+</html>
